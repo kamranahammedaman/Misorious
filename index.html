@@ -1,4 +1,4 @@
-man<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
@@ -6,113 +6,167 @@ man<!DOCTYPE html>
 <title>A Super Search Engine</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* ===== Base Styles ===== */
   body {
-    margin:0;
-    font-family:'Poppins', sans-serif;
-    background-color: black;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  /* ===== Fade-In Animation ===== */
+  @keyframes fadeUp {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
   }
 
   .logo {
-    font-size:25px;
-    font-weight:250;
-    color:#4285f4;
-    margin-bottom:10px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    color: #f5f5f5;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(66,133,244,0.3);
+    animation: fadeUp 1.2s ease;
   }
 
+  .logo img {
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(66,133,244,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .logo img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(66,133,244,0.6);
+  }
+
+  /* ===== Search Container ===== */
   .search-container {
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:10px;
-    background-color: black;
-    padding:12px 20px;
-    border-radius:50px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.1);
-    max-width:700px;
-    width:90%;
-    transition:0.3s;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    max-width: 700px;
+    width: 90%;
+    transition: all 0.3s ease;
+    animation: fadeUp 1.6s ease;
   }
 
   .search-container:hover {
-    box-shadow:0 12px 35px rgba(0,0,0,0.15);
+    border-color: rgba(66,133,244,0.5);
+    box-shadow: 0 0 40px rgba(66,133,244,0.2);
   }
 
   input[type=text] {
-    flex:1;
-    padding:12px 20px;
-    border-radius:50px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.1);
-    max-width:700px;
-    border:none;
-    outline:none;
-    font-size:16px;
-    box-shadow:inset 0 2px 5px rgba(0,0,0,0.05);
-    transition:0.3s;
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f5f5f5;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+    transition: box-shadow 0.3s ease, background 0.3s ease;
   }
 
   input[type=text]:focus {
-    box-shadow:inset 0 2px 6px rgba(66,133,244,0.3);
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 0 8px rgba(66,133,244,0.5);
   }
 
   select {
-    padding:12px 20px;
-    border-radius:50px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.1);
-    max-width:700px;
-    border:none;
-    outline:none;
-    font-size:14px;
-    background:#f1f3f4;
-    cursor:pointer;
-    transition:0.3s;
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f5f5f5;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 
   select:hover {
-    background:#e2e5e8;
+    background: rgba(255, 255, 255, 0.25);
   }
 
+  /* ===== Search Button ===== */
   .search-btn {
-    background-color: black;
-    border:none;
-    border-radius:50%;
-    width:30px;
-    height:30px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    
-    
-    cursor:pointer;
-    transition:0.3s;
+    background-color: rgba(66,133,244,0.1);
+    border: 2px solid rgba(66,133,244,0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(66,133,244,0.2);
   }
 
   .search-btn:hover {
-    background-color: black;
-    transform:scale(1.1);
+    background-color: rgba(66,133,244,0.3);
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(66,133,244,0.4);
+  }
+
+  .search-btn img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(1.3);
+  }
+
+  /* ===== Links ===== */
+  p a {
+    color: #4285f4;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  p a:hover {
+    text-decoration: underline;
   }
 
   @media(max-width:700px){
     .search-container{
-      flex-direction:column;
-      gap:12px;
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px;
     }
     select, input[type=text]{
-      width:100%;
+      width: 100%;
+    }
+    .search-btn {
+      width: 45px;
+      height: 45px;
     }
   }
 </style>
 </head>
 <body>
 <center>
-  <div class="logo"><p><a href="./index.html">
-<img src="./egoal.png" alt="Misorious - An Universal Search Engine" width="100" height="100">
-</a></p><p>A Super Search Engine</p></div>
+  <div class="logo">
+    <p><a href="./index.html">
+      <img src="./egoal.png" alt="Misorious - An Universal Search Engine" width="100" height="100">
+    </a></p>
+    <p>A Super Search Engine</p>
+  </div>
+
   <div class="search-container">
     <input type="text" id="query" placeholder="কীওয়ার্ড লিখুন..." />
     <select id="category">
@@ -129,9 +183,13 @@ man<!DOCTYPE html>
       <option value="x">X (Twitter)</option>
       <option value="facebook">Facebook</option>
     </select>
-    <button class="search-btn" onclick="performSearch()"><img src="./search.png" alt="Misorious Search" width="45" height="45"></button>
+    <button class="search-btn" onclick="performSearch()">
+      <img src="./search.png" alt="Misorious Search">
+    </button>
   </div>
-<p><a href="./index.html" target="_blank">Misorious</a> - <a href="facebook.com/kamran.ahmed.aman" target="_blank">Kamran ahammed Aman</a>
+
+  <p><a href="./index.html" target="_blank">Misorious</a> - <a href="facebook.com/kamran.ahmed.aman" target="_blank">Kamran ahammed Aman</a></p>
+
 <script>
 const CLASSES = {
   'General':{desc:'সাধারণ ওয়েব সার্চ', gen:q=>q},
@@ -173,7 +231,6 @@ const CLASSES = {
   'Tutorial: Hacking Labs (ethical)':{desc:'নিরাপত্তা ল্যাব ও সিমুলেশন (ethical)', gen:q=>`${q} ("tryhackme" OR "hackthebox" OR "vulnhub")`}
 };
 
-// Populate Category Dropdown
 const categorySelect = document.getElementById('category');
 Object.keys(CLASSES).forEach(c=>{
   const opt = document.createElement('option');
@@ -182,22 +239,17 @@ Object.keys(CLASSES).forEach(c=>{
   categorySelect.appendChild(opt);
 });
 
-// Search function
 function performSearch(){
   const query = document.getElementById('query').value.trim();
   if(!query) return alert('দয়া করে কিওয়ার্ড লিখুন।');
-
   const category = categorySelect.value;
   const engine = document.getElementById('engine').value;
-
   const cls = CLASSES[category];
   if(cls?.restricted){
     const ok = confirm(`"${category}" ক্লাসটি গবেষণামূলক/রিস্ক আছে — আপনি নৈতিকভাবে ব্যবহার করবেন?`);
     if(!ok) return;
   }
-
   const finalQuery = cls?.gen(query) || query;
-
   let url = '';
   switch(engine){
     case 'google':
